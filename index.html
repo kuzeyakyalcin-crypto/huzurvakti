@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Huzur Vakti — Namaz Vakitleri, Kıble & İbadet</title>
+<meta name="description" content="Namaz vakitleri, ezan bildirimi, kıble pusulası, zikirmatik, Kuran ve daha fazlası. Ücretsiz İslami uygulama.">
+<meta property="og:title" content="Huzur Vakti — Namaz & İbadet Uygulaması">
+<meta property="og:description" content="40+ şehir için namaz vakitleri, kıble, zikir, Kuran ve topluluk hatmi. Ücretsiz indir.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --green:#059669;
+  --green-dark:#065f46;
+  --green-light:#d1fae5;
+  --text:#0f172a;
+  --muted:#64748b;
+  --bg:#f8fafc;
+}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;background:rgba(248,250,252,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06)}
+.nav-logo{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:900;color:var(--text)}
+.nav-logo-icon{width:36px;height:36px;background:linear-gradient(135deg,#059669,#0f766e);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.nav-cta{background:var(--green);color:white;padding:10px 20px;border-radius:12px;font-weight:800;font-size:13px;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px 24px 60px;background:linear-gradient(160deg,#f0fdf4 0%,#ecfdf5 40%,#f0f9ff 100%);position:relative;overflow:hidden;text-align:center}
+.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(5,150,105,.12) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-50px;left:-50px;width:300px;height:300px;background:radial-gradient(circle,rgba(6,182,212,.08) 0%,transparent 70%);pointer-events:none}
+.hero-inner{position:relative;z-index:1;max-width:680px}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(5,150,105,.1);border:1px solid rgba(5,150,105,.2);color:var(--green-dark);padding:6px 14px;border-radius:30px;font-size:12px;font-weight:800;margin-bottom:24px;text-transform:uppercase;letter-spacing:.08em}
+.hero h1{font-size:clamp(36px,7vw,64px);font-weight:900;line-height:1.1;letter-spacing:-2px;margin-bottom:20px;color:var(--text)}
+.hero h1 span{color:var(--green)}
+.hero-sub{font-size:18px;color:var(--muted);line-height:1.6;margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:48px}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:white;padding:16px 28px;border-radius:16px;font-weight:800;font-size:15px;text-decoration:none;box-shadow:0 8px 24px rgba(5,150,105,.3);transition:transform .2s,box-shadow .2s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(5,150,105,.4)}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;background:white;color:var(--text);padding:16px 28px;border-radius:16px;font-weight:800;font-size:15px;text-decoration:none;border:2px solid rgba(0,0,0,.08);transition:border-color .2s}
+.btn-secondary:hover{border-color:var(--green)}
+.hero-stats{display:flex;gap:32px;justify-content:center;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-num{font-size:28px;font-weight:900;color:var(--green)}
+.hero-stat-label{font-size:12px;color:var(--muted);font-weight:700;margin-top:2px}
+
+/* FEATURES */
+.features{padding:80px 24px;max-width:1100px;margin:0 auto}
+.section-title{text-align:center;font-size:clamp(28px,5vw,42px);font-weight:900;letter-spacing:-1px;margin-bottom:12px}
+.section-sub{text-align:center;font-size:16px;color:var(--muted);margin-bottom:56px;line-height:1.6}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.feat-card{background:white;border-radius:24px;padding:28px;border:1px solid rgba(0,0,0,.06);box-shadow:0 4px 16px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s}
+.feat-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.feat-icon{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+.feat-card h3{font-size:17px;font-weight:900;margin-bottom:8px}
+.feat-card p{font-size:13px;color:var(--muted);line-height:1.6}
+
+/* SCREENSHOTS */
+.screenshots{background:linear-gradient(135deg,#0a1f10 0%,#064e3b 50%,#0a1f2f 100%);padding:80px 24px;overflow:hidden}
+.screenshots-inner{max-width:1100px;margin:0 auto;text-align:center}
+.screenshots h2{color:white;font-size:clamp(28px,5vw,42px);font-weight:900;letter-spacing:-1px;margin-bottom:12px}
+.screenshots p{color:rgba(255,255,255,.6);font-size:16px;margin-bottom:48px}
+.screens-row{display:flex;gap:16px;justify-content:center;overflow-x:auto;padding:8px 0;scrollbar-width:none}
+.screens-row::-webkit-scrollbar{display:none}
+.screen-card{flex-shrink:0;width:180px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:16px 12px;text-align:center}
+.screen-emoji{font-size:32px;display:block;margin-bottom:8px}
+.screen-title{color:white;font-size:12px;font-weight:800}
+.screen-sub{color:rgba(255,255,255,.45);font-size:10px;margin-top:4px}
+
+/* HOW */
+.how{padding:80px 24px;max-width:800px;margin:0 auto;text-align:center}
+.steps{display:flex;flex-direction:column;gap:16px;text-align:left;margin-top:48px}
+.step{display:flex;gap:16px;align-items:flex-start;background:white;padding:20px 24px;border-radius:20px;border:1px solid rgba(0,0,0,.06)}
+.step-num{width:40px;height:40px;background:var(--green);color:white;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900;flex-shrink:0}
+.step h3{font-size:15px;font-weight:800;margin-bottom:4px}
+.step p{font-size:13px;color:var(--muted);line-height:1.5}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,#059669,#0f766e);padding:80px 24px;text-align:center}
+.cta h2{color:white;font-size:clamp(28px,5vw,42px);font-weight:900;letter-spacing:-1px;margin-bottom:16px}
+.cta p{color:rgba(255,255,255,.75);font-size:16px;margin-bottom:40px}
+.cta-btn{display:inline-flex;align-items:center;gap:10px;background:white;color:var(--green-dark);padding:18px 36px;border-radius:16px;font-weight:900;font-size:16px;text-decoration:none;box-shadow:0 8px 32px rgba(0,0,0,.2);transition:transform .2s}
+.cta-btn:hover{transform:translateY(-2px)}
+
+/* FAQ */
+.faq{padding:80px 24px;max-width:700px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(0,0,0,.08);padding:20px 0}
+.faq-q{font-size:15px;font-weight:800;margin-bottom:8px;cursor:pointer}
+.faq-a{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* FOOTER */
+footer{background:var(--text);padding:40px 24px;text-align:center}
+footer p{color:rgba(255,255,255,.4);font-size:12px;line-height:1.8}
+footer a{color:rgba(255,255,255,.6);text-decoration:none}
+
+@media(max-width:600px){
+  .hero-btns{flex-direction:column;align-items:center}
+  .btn-primary,.btn-secondary{width:100%;max-width:300px;justify-content:center}
+  nav{padding:12px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-logo-icon">🕌</div>
+    Huzur Vakti
+  </div>
+  <a href="https://play.google.com/store/apps/details?id=app.replit.prayer_reminder_plus__sofyasoft2026.twa" class="nav-cta" target="_blank">
+    📲 Ücretsiz İndir
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🕌 Ücretsiz İslami Uygulama</div>
+    <h1>Namaz, Zikir ve<br><span>İbadet Rehberin</span></h1>
+    <p class="hero-sub">Namaz vakitleri, ezan bildirimi, kıble pusulası, zikirmatik, Kuran ve topluluk hatmi — hepsi tek uygulamada, ücretsiz.</p>
+    <div class="hero-btns">
+      <a href="https://play.google.com/store/apps/details?id=app.replit.prayer_reminder_plus__sofyasoft2026.twa" class="btn-primary" target="_blank">
+        ▶ Google Play'den İndir
+      </a>
+      <a href="#ozellikler" class="btn-secondary">
+        Özellikleri Gör →
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">40+</div>
+        <div class="hero-stat-label">Türkiye Şehri</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">50+</div>
+        <div class="hero-stat-label">İslami İçerik</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">%100</div>
+        <div class="hero-stat-label">Ücretsiz Temel Özellikler</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="ozellikler">
+  <h2 class="section-title">Her İhtiyacınız İçin</h2>
+  <p class="section-sub">Günlük ibadet hayatınızı kolaylaştıran kapsamlı özellikler</p>
+  <div class="features-grid">
+    <div class="feat-card">
+      <div class="feat-icon" style="background:#d1fae5">🔔</div>
+      <h3>Namaz Vakitleri & Ezan</h3>
+      <p>40+ Türkiye şehri için hassas namaz vakitleri ve ezan sesi bildirimleri. Siz uyurken bile çalışır.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon" style="background:#dbeafe">🧭</div>
+      <h3>Kıble Pusulası</h3>
+      <p>GPS destekli, gerçek zamanlı sensör ile hassas Mekke yönü. İstanbul'dan 2.405 km.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon" style="background:#ede9fe">📿</div>
+      <h3>Zikirmatik</h3>
+      <p>Hedef belirle, tek dokunuşla say. Subhanallah, Elhamdülillah, Allahu Ekber ve daha fazlası.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon" style="background:#fef3c7">📖</div>
+      <h3>Kuran-ı Kerim</h3>
+      <p>114 sure, Diyanet meali, Arapça metin. Mişari el-Afasi ve Abdülbasit ile sesli Kuran.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon" style="background:#cffafe">👨‍👩‍👧</div>
+      <h3>Topluluk Hatmi</h3>
+      <p>Aile ve arkadaşlarınla 30 cüzü paylaş, beraber tamamla. Gerçek zamanlı ilerleme takibi.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon" style="background:#fce7f3">🤖</div>
+      <h3>İslami AI Asistan</h3>
+      <p>Namaz, oruç, zekat ve dini konularda anında cevap. Gemini AI destekli, Hanefi mezhebine göre.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon" style="background:#d1fae5">✈️</div>
+      <h3>Seyahat Modu</h3>
+      <p>Seferi namaz hesaplama, farklı şehirlerde otomatik vakit güncelleme.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon" style="background:#fef3c7">👶</div>
+      <h3>Çocuk Köşesi</h3>
+      <p>Elif Ba, abdest ve namaz öğren, kısa sureler, İslami quiz. Çocuklarınızla birlikte öğrenin.</p>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon" style="background:#ede9fe">🌙</div>
+      <h3>Ramazan Modu</h3>
+      <p>Sahur ve iftar vakitleri, teravih takibi, özel Ramazan içerikleri.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="screenshots">
+  <div class="screenshots-inner">
+    <h2>Her Sayfada Profesyonel Tasarım</h2>
+    <p>Koyu ve açık tema, Türkçe/İngilizce/Almanca/Arapça dil desteği</p>
+    <div class="screens-row">
+      <div class="screen-card">
+        <span class="screen-emoji">🕌</span>
+        <div class="screen-title">Ana Sayfa</div>
+        <div class="screen-sub">Namaz vakitleri & seri takibi</div>
+      </div>
+      <div class="screen-card">
+        <span class="screen-emoji">🧭</span>
+        <div class="screen-title">Kıble Pusulası</div>
+        <div class="screen-sub">GPS destekli hassas yön</div>
+      </div>
+      <div class="screen-card">
+        <span class="screen-emoji">📿</span>
+        <div class="screen-title">Zikirmatik</div>
+        <div class="screen-sub">Hedefli zikir takibi</div>
+      </div>
+      <div class="screen-card">
+        <span class="screen-emoji">📖</span>
+        <div class="screen-title">Kuran Dinle</div>
+        <div class="screen-sub">5+ hafız sesi</div>
+      </div>
+      <div class="screen-card">
+        <span class="screen-emoji">👥</span>
+        <div class="screen-title">Topluluk Hatmi</div>
+        <div class="screen-sub">Aile ile hatim</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="how">
+  <h2 class="section-title">Başlamak Çok Kolay</h2>
+  <p class="section-sub">3 adımda günlük ibadet rutininizi oluşturun</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div>
+        <h3>Uygulamayı İndir</h3>
+        <p>Google Play'den ücretsiz indirin. Kayıt veya hesap oluşturmaya gerek yok.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div>
+        <h3>Şehrini ve Bildirim Tercihlerini Seç</h3>
+        <p>40+ şehirden birini seç, hangi vakitlerde ezan bildirimi almak istediğini ayarla.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div>
+        <h3>İbadet Hayatını Zenginleştir</h3>
+        <p>Zikirmatik, Kuran, hatim ve daha fazlasını keşfet. Ailenle topluluk hatmi başlat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Hemen İndir, Ücretsiz Başla</h2>
+  <p>Temel özellikler tamamen ücretsiz. Premium'a geçerek reklamsız deneyim yaşayın.</p>
+  <a href="https://play.google.com/store/apps/details?id=app.replit.prayer_reminder_plus__sofyasoft2026.twa" class="cta-btn" target="_blank">
+    ▶ Google Play'den İndir
+  </a>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <h2 class="section-title" style="text-align:center">Sık Sorulan Sorular</h2>
+  <br>
+  <div class="faq-item">
+    <div class="faq-q">Uygulama tamamen ücretsiz mi?</div>
+    <div class="faq-a">Evet, namaz vakitleri, kıble, zikirmatik, Kuran ve temel özellikler tamamen ücretsizdir. Premium sürümde reklamlar kaldırılır ve özel içeriklere erişim sağlanır.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Hangi cihazlarda çalışır?</div>
+    <div class="faq-a">Android 8.0 ve üzeri tüm cihazlarda çalışır. Samsung, Xiaomi, Huawei, Oppo ve diğer tüm Android cihazlarla uyumludur.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Namaz vakitleri ne kadar doğru?</div>
+    <div class="faq-a">Diyanet İşleri Başkanlığı'nın hesaplama yöntemi kullanılarak 40+ Türkiye şehri için hassas vakitler hesaplanır. Türkiye dışı için Diyanet (Turkey) veya diğer uluslararası yöntemler seçilebilir.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">İnternet bağlantısı şart mı?</div>
+    <div class="faq-a">Namaz vakitleri, kıble, zikirmatik ve Kuran metni internet olmadan da çalışır. Topluluk hatmi, AI asistan ve sesli Kuran için bağlantı gerekir.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">Topluluk hatmi nasıl çalışır?</div>
+    <div class="faq-a">Uygulamada "Topluluk Hatmi" sayfasına gidin, grubunuza özel kod oluşturun ve aile ile arkadaşlarınıza gönderin. Her kişi bir cüz alır, 30 cüz tamamlanınca hatim biter.</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    🕌 <strong style="color:rgba(255,255,255,.7)">Huzur Vakti</strong> — Namaz & İbadet Uygulaması<br>
+    <a href="mailto:sofyasoft2026@gmail.com">sofyasoft2026@gmail.com</a><br><br>
+    © 2026 SofyaSoft · Tüm hakları saklıdır<br>
+    <a href="https://play.google.com/store/apps/details?id=app.replit.prayer_reminder_plus__sofyasoft2026.twa">Google Play</a>
+  </p>
+</footer>
+
+<script>
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href'))?.scrollIntoView({behavior:'smooth'});
+  });
+});
+</script>
+</body>
+</html>
